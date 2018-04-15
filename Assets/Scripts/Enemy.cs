@@ -14,6 +14,9 @@ namespace Assets.Scripts
 		[SerializeField]
 		private GameObject _target;
 
+		[SerializeField]
+		private int m_HitVelocity;
+
 		/// <summary>
 		/// Called once per frame.
 		/// </summary>
@@ -24,7 +27,17 @@ namespace Assets.Scripts
 
 			Vector2 moveVector = directionVector * m_Speed * Time.deltaTime;
 
-			GetComponent<Rigidbody2D>().velocity = moveVector;
+			GetComponent<Rigidbody2D>().velocity += moveVector;
+		}
+
+		private void OnCollisionStay2D(Collision2D collision)
+		{
+			if (collision.otherRigidbody != null && collision.rigidbody != null)
+			{
+				Vector2 collisionDirection = collision.otherRigidbody.position - collision.rigidbody.position;
+				collisionDirection = collisionDirection.normalized;
+				GetComponent<Rigidbody2D>().velocity = collisionDirection * m_HitVelocity;
+			}
 		}
 	}
 }
