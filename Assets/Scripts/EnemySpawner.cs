@@ -70,6 +70,8 @@ public sealed class EnemySpawner : AbstractMonoBehaviour
 		position += position.normalized * m_MinDistanceFromProtag;
 
 		Enemy enemy = Instantiate(m_EnemyPrefab, position, Quaternion.identity);
+		enemy.Target = m_Protagonist.gameObject;
+
 		m_Enemies.Add(enemy);
 	}
 
