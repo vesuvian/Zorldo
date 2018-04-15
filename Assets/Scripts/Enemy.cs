@@ -5,26 +5,32 @@ namespace Assets.Scripts
 	/// <summary>
 	/// The most beastly of enemies
 	/// </summary>
-	public class Enemy : AbstractMonoBehaviour
+	public class Enemy : AbstractCharacter
 	{
-
-		[SerializeField]
-		private int m_Speed;
-
 		[SerializeField]
 		private GameObject _target;
 
+		[SerializeField]
+		private int m_HitVelocity;
+
 		/// <summary>
-		/// Called once per frame.
+		/// Gets the direction to move this frame.
 		/// </summary>
-		protected override void Update()
+		/// <returns></returns>
+		protected override Vector2 GetDirectionVector()
 		{
-			Vector2 directionVector = _target.GetComponent<Transform>().position - GetComponent<Transform>().position;
-			directionVector = directionVector.normalized;
+			Vector2 directionVector = _target.transform.position - transform.position;
+			return directionVector.normalized;
+		}
 
-			Vector2 moveVector = directionVector * m_Speed * Time.deltaTime;
-
-			GetComponent<Rigidbody2D>().velocity = moveVector;
+		protected override void OnCollisionStay2D(Collision2D collision)
+		{
+			if (collision.otherRigidbody != null && collision.rigidbody != null)
+			{
+				Vector2 collisionDirection = collision.otherRigidbody.position - collision.rigidbody.position;
+				collisionDirection = collisionDirection.normalized;
+				GetComponent<Rigidbody2D>().velocity = collisionDirection * m_HitVelocity;
+			}
 		}
 	}
 }
