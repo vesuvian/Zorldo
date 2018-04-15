@@ -8,6 +8,20 @@ namespace Assets.Scripts
 	public abstract class AbstractMonoBehaviour : MonoBehaviour
 	{
 		/// <summary>
+		/// Called when the MonoBehaviour becomes enabled.
+		/// </summary>
+		protected virtual void OnEnable()
+		{
+		}
+
+		/// <summary>
+		/// Called when the MonoBehaviour becomes disabled.
+		/// </summary>
+		protected virtual void OnDisable()
+		{
+		}
+
+		/// <summary>
 		/// Called once per frame.
 		/// </summary>
 		protected virtual void Update()
