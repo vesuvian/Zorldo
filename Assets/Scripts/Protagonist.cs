@@ -5,18 +5,16 @@ namespace Assets.Scripts
 	/// <summary>
 	/// The manliest of men.
 	/// </summary>
-	public sealed class Protagonist : AbstractMonoBehaviour
+	public sealed class Protagonist : AbstractCharacter
 	{
-		[SerializeField]
-		private int m_Speed;
-
 		[SerializeField]
 		private int m_HitVelocity;
 
 		/// <summary>
-		/// Called once per frame.
+		/// Gets the direction to move this frame.
 		/// </summary>
-		protected override void Update()
+		/// <returns></returns>
+		protected override Vector2 GetDirectionVector()
 		{
 			Vector2 inputVector = Vector2.zero;
 
@@ -29,14 +27,10 @@ namespace Assets.Scripts
 			if (Input.GetKey(KeyCode.D))
 				inputVector += Vector2.right;
 
-			inputVector = inputVector.normalized;
-
-			Vector2 moveVector = inputVector * m_Speed * Time.deltaTime;
-
-			GetComponent<Rigidbody2D>().velocity += moveVector;
+			return inputVector.normalized;
 		}
 
-		private void OnCollisionEnter2D(Collision2D collision)
+		protected override void OnCollisionEnter2D(Collision2D collision)
 		{
 			Vector2 collisionDirection = collision.otherRigidbody.position - collision.rigidbody.position;
 			collisionDirection = collisionDirection.normalized;
