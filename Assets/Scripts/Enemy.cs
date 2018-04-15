@@ -11,12 +11,15 @@ namespace Assets.Scripts
 		[SerializeField]
 		private int m_Speed;
 
+		[SerializeField]
+		private GameObject _target;
+
 		/// <summary>
 		/// Called once per frame.
 		/// </summary>
 		protected override void Update()
 		{
-			Vector2 directionVector = new Vector2(Random.value * 2 - 1, Random.value * 2 - 1);
+			Vector2 directionVector = _target.transform.position - this.transform.position;
 			directionVector = directionVector.normalized;
 
 			Vector2 moveVector = directionVector * m_Speed * Time.deltaTime;
