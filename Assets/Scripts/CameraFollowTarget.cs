@@ -17,10 +17,12 @@ namespace Assets.Scripts
 		// Update is called once per frame
 		protected override void Update()
 		{
-			var cameraTransform = GetComponent<Transform>();
-			Vector2 difference = _target.GetComponent<Transform>().position - cameraTransform.position;
+			Vector2 playerPosition = _target.GetComponent<Transform>().position;
 
-			cameraTransform.Translate(difference);
+			var x = Mathf.Clamp(playerPosition.x / 8.0f, -1, 1);
+			var y = Mathf.Clamp(playerPosition.y / 4.5f, -1, 1);
+
+			transform.position = new Vector3(x, y, -10);
 		}
 	}
 }
