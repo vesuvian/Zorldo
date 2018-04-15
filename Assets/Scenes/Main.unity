@@ -173,6 +173,7 @@ GameObject:
   - component: {fileID: 293934720}
   - component: {fileID: 293934722}
   - component: {fileID: 293934721}
+  - component: {fileID: 293934723}
   m_Layer: 0
   m_Name: Tilemap_Walls
   m_TagString: Untagged
@@ -768,6 +769,19 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!19719996 &293934723
+TilemapCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 293934719}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
 --- !u!1 &1293484922
 GameObject:
   m_ObjectHideFlags: 0
@@ -1007,7 +1021,7 @@ Camera:
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
-  m_AllowMSAA: 1
+  m_AllowMSAA: 0
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
