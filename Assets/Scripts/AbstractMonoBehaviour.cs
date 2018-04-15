@@ -35,5 +35,13 @@ namespace Assets.Scripts
 		protected virtual void OnCollisionEnter2D(Collision2D collision)
 		{
 		}
+
+		/// <summary>
+		/// Called when this GameObject is touching the given collider.
+		/// </summary>
+		/// <param name="collision"></param>
+		protected virtual void OnCollisionStay2D(Collision2D collision)
+		{
+		}
 	}
 }

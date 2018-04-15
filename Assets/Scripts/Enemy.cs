@@ -23,7 +23,7 @@ namespace Assets.Scripts
 			return directionVector.normalized;
 		}
 
-		private void OnCollisionStay2D(Collision2D collision)
+		protected override void OnCollisionStay2D(Collision2D collision)
 		{
 			if (collision.otherRigidbody != null && collision.rigidbody != null)
 			{
