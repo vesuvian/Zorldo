@@ -113,6 +113,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &206038911 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1611499913127442, guid: ef2008c6a3aff7543894a4a27d57d7ec,
+    type: 2}
+  m_PrefabInternal: {fileID: 1812968408}
 --- !u!1 &1311798961
 GameObject:
   m_ObjectHideFlags: 0
@@ -142,6 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Speed: 1
+  _target: {fileID: 206038911}
 --- !u!212 &1311798963
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -289,11 +295,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4293867023759098, guid: ef2008c6a3aff7543894a4a27d57d7ec, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 1.3494862
+      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 4293867023759098, guid: ef2008c6a3aff7543894a4a27d57d7ec, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.17690963
+      value: -0.09
       objectReference: {fileID: 0}
     - target: {fileID: 4293867023759098, guid: ef2008c6a3aff7543894a4a27d57d7ec, type: 2}
       propertyPath: m_LocalPosition.z
