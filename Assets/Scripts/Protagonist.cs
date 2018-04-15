@@ -10,6 +10,9 @@ namespace Assets.Scripts
 		[SerializeField]
 		private int m_Speed;
 
+		[SerializeField]
+		private int m_HitVelocity;
+
 		/// <summary>
 		/// Called once per frame.
 		/// </summary>
@@ -30,7 +33,14 @@ namespace Assets.Scripts
 
 			Vector2 moveVector = inputVector * m_Speed * Time.deltaTime;
 
-			transform.Translate(moveVector);
+			GetComponent<Rigidbody2D>().velocity += moveVector;
+		}
+
+		private void OnCollisionEnter2D(Collision2D collision)
+		{
+			Vector2 collisionDirection = collision.otherRigidbody.position - collision.rigidbody.position;
+			collisionDirection = collisionDirection.normalized;
+			GetComponent<Rigidbody2D>().velocity = collisionDirection * m_HitVelocity;
 		}
 	}
 }

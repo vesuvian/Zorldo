@@ -19,12 +19,12 @@ namespace Assets.Scripts
 		/// </summary>
 		protected override void Update()
 		{
-			Vector2 directionVector = _target.transform.position - this.transform.position;
+			Vector2 directionVector = _target.GetComponent<Transform>().position - GetComponent<Transform>().position;
 			directionVector = directionVector.normalized;
 
 			Vector2 moveVector = directionVector * m_Speed * Time.deltaTime;
 
-			transform.Translate(moveVector);
+			GetComponent<Rigidbody2D>().velocity = moveVector;
 		}
 	}
 }
