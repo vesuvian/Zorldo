@@ -11,7 +11,11 @@ namespace Assets.Scripts
 		/// </summary>
 		protected override void Update()
 		{
-			GetComponent<Rigidbody2D>().velocity = GetDirectionVector() * m_Speed * Time.deltaTime;
+			Vector2 directionVector = GetDirectionVector();
+			bool right = directionVector.x >= 0;
+
+			transform.localScale = new Vector2(0, 1) + (right ? Vector2.right : Vector2.left);
+			GetComponent<Rigidbody2D>().velocity = directionVector * m_Speed * Time.deltaTime;
 		}
 
 		/// <summary>
