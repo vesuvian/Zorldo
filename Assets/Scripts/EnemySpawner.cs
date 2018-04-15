@@ -69,7 +69,11 @@ public sealed class EnemySpawner : AbstractMonoBehaviour
 		Vector2 position = Random.insideUnitCircle * (m_MaxDistanceFromProtag - m_MinDistanceFromProtag);
 		position += position.normalized * m_MinDistanceFromProtag;
 
-		Enemy enemy = Instantiate(m_EnemyPrefab, position, Quaternion.identity);
+		Enemy enemy = Instantiate(m_EnemyPrefab, transform);
+
+		enemy.transform.position = position;
+		enemy.Target = m_Protagonist.gameObject;
+
 		m_Enemies.Add(enemy);
 	}
 

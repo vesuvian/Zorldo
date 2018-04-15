@@ -13,12 +13,17 @@ namespace Assets.Scripts
 		[SerializeField]
 		private int m_HitVelocity;
 
+		public GameObject Target { get { return _target; } set { _target = value; } }
+
 		/// <summary>
 		/// Gets the direction to move this frame.
 		/// </summary>
 		/// <returns></returns>
 		protected override Vector2 GetDirectionVector()
 		{
+			if (_target == null)
+				return Random.insideUnitCircle.normalized;
+
 			Vector2 directionVector = _target.transform.position - transform.position;
 			return directionVector.normalized;
 		}
