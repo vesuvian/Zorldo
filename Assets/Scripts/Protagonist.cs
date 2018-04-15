@@ -30,11 +30,14 @@ namespace Assets.Scripts
 			return inputVector.normalized;
 		}
 
-		protected override void OnCollisionEnter2D(Collision2D collision)
+		private void OnCollisionStay2D(Collision2D collision)
 		{
-			Vector2 collisionDirection = collision.otherRigidbody.position - collision.rigidbody.position;
-			collisionDirection = collisionDirection.normalized;
-			GetComponent<Rigidbody2D>().velocity = collisionDirection * m_HitVelocity;
+			if (collision.otherRigidbody != null && collision.rigidbody != null)
+			{
+				Vector2 collisionDirection = collision.otherRigidbody.position - collision.rigidbody.position;
+				collisionDirection = collisionDirection.normalized;
+				GetComponent<Rigidbody2D>().velocity = collisionDirection * m_HitVelocity;
+			}
 		}
 	}
 }
