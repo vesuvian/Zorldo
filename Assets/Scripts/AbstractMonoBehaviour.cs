@@ -13,5 +13,13 @@ namespace Assets.Scripts
 		protected virtual void Update()
 		{
 		}
+
+		/// <summary>
+		/// Called when a 2D collision occurs between this GameObject and the given collider.
+		/// </summary>
+		/// <param name="collision"></param>
+		protected virtual void OnCollisionEnter2D(Collision2D collision)
+		{
+		}
 	}
 }
