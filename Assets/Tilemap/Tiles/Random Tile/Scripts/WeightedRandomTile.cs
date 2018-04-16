@@ -37,10 +37,10 @@ namespace UnityEngine.Tilemaps
 				// binary search to find index in weight array
 				int index = Array.BinarySearch(weights, randomValue);
 				// if the binary search didn't find the value exactly, it will return the two's complement of the index
-				// of the first value that is greater, or the two's complement of the array's length
-				// so basically, if it's negative, take the two's complement and subtract one
+				// of the first value that is greater, or the two's complement of the array's length if all greater
+				// so basically, if it's negative, take the two's complement
 				if(index < 0)
-					index = ~index - 1;
+					index = ~index;
 
 				tileData.sprite = m_Sprites[index];
 			}
