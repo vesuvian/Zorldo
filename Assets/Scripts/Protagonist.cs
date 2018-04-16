@@ -10,6 +10,9 @@ namespace Assets.Scripts
 		[SerializeField]
 		private int m_HitVelocity;
 
+		[SerializeField]
+		private AudioClip m_Augh;
+
 		/// <summary>
 		/// Gets the direction to move this frame.
 		/// </summary>
@@ -34,6 +37,14 @@ namespace Assets.Scripts
 		{
 			if (collision.otherRigidbody != null && collision.rigidbody != null)
 			{
+				AudioSource source = GetComponent<AudioSource>();
+
+				if (source.isPlaying)
+					source.Stop();
+
+				source.pitch = 1.5f - Random.value;
+				source.PlayOneShot(m_Augh);
+
 				Vector2 collisionDirection = collision.otherRigidbody.position - collision.rigidbody.position;
 				collisionDirection = collisionDirection.normalized;
 				GetComponent<Rigidbody2D>().velocity = collisionDirection * m_HitVelocity;
