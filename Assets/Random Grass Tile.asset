@@ -47,9 +47,9 @@ MonoBehaviour:
   - {fileID: 21300730, guid: bccca1014ac004443af9b0a72ac76896, type: 3}
   - {fileID: 21300732, guid: bccca1014ac004443af9b0a72ac76896, type: 3}
   m_Weights:
-  - 5
-  - 5
-  - 5
+  - 10
+  - 10
+  - 10
   - 10
   - 10
   - 1

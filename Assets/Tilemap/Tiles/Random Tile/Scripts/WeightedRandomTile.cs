@@ -22,7 +22,10 @@ namespace UnityEngine.Tilemaps
 			base.GetTileData(location, tileMap, ref tileData);
 			if ((m_Sprites != null) && (m_Sprites.Length > 0))
 			{
-				long hash = location.x;
+				long hash = (int)(Random.value * 1000000f);
+				hash = (hash + 0x01234567) + (hash << 13);
+				hash = (hash + 0x89abcdef) + (hash >> 9);
+				hash ^= location.x;
 				hash = (hash + 0xabcd1234) + (hash << 15);
 				hash = (hash + 0x0987efab) ^ (hash >> 11);
 				hash ^= location.y;

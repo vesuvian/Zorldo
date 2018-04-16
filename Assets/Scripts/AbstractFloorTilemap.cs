@@ -17,6 +17,7 @@ namespace Assets.Scripts
 		protected override void OnEnable()
 		{
 			m_Tilemap = GetComponent<Tilemap>();
+			m_Tilemap.CompressBounds();
 			var bounds = m_Tilemap.cellBounds;
 			for (int i = bounds.xMin; i < bounds.xMax; i++)
 				for (int j = bounds.yMin; j < bounds.yMax; j++)
