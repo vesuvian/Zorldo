@@ -39,9 +39,8 @@ namespace Assets.Scripts
 			{
 				AudioSource source = GetComponent<AudioSource>();
 
-				Health -= 1;
-				Mathf.Clamp(Health, 0, m_MaxHealth);
-				Debug.Log(Health);
+				Health = Mathf.Clamp(Health -1, 0, m_MaxHealth);
+
 				if (source.isPlaying)
 					source.Stop();
 				

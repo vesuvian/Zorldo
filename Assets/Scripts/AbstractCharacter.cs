@@ -6,10 +6,17 @@ namespace Assets.Scripts
 	{
 		[SerializeField] protected int m_Speed;
 
-		[SerializeField] protected int m_MaxHealth;
+		[SerializeField]
+		protected int m_MaxHealth;
 
 		public int Health { get; protected set; }
 
+		public int MaxHealth
+		{
+			get { return m_MaxHealth; }
+			protected set { m_MaxHealth = value; }
+		}
+		
 		protected override void OnEnable()
 		{
 			base.OnEnable();

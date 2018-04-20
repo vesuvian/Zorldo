@@ -11,6 +11,12 @@ namespace Assets.Scripts
 
 		[SerializeField] private int m_HealthPerHeart = 4;
 
+		public int HealthPerHeart
+		{
+			get { return m_HealthPerHeart; }
+			set { m_HealthPerHeart = value; }
+		}
+
 		public void SetHeartAmount(int health)
 		{
 			m_FullHeart.fillAmount = (float)health / m_HealthPerHeart;
