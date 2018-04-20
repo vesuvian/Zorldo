@@ -33,18 +33,27 @@ namespace Assets.Scripts
 			return inputVector.normalized;
 		}
 
-		protected override void OnCollisionStay2D(Collision2D collision)
+		protected override void OnCollisionEnter2D(Collision2D collision)
 		{
-			if (collision.otherRigidbody != null && collision.rigidbody != null)
+			if (collision.rigidbody != null && collision.rigidbody.gameObject.name == "Enemy")
 			{
 				AudioSource source = GetComponent<AudioSource>();
 
+				Health -= 1;
+				Mathf.Clamp(Health, 0, m_MaxHealth);
+				Debug.Log(Health);
 				if (source.isPlaying)
 					source.Stop();
-
-				source.pitch = 1.5f - Random.value;
+				
+				source.pitch = Health > 0 ? 1.5f : 0.5f;
 				source.PlayOneShot(m_Augh);
+			}
+		}
 
+		protected override void OnCollisionStay2D(Collision2D collision)
+		{
+			if (collision.rigidbody != null && collision.rigidbody.gameObject.name == "Enemy")
+			{
 				Vector2 collisionDirection = collision.otherRigidbody.position - collision.rigidbody.position;
 				collisionDirection = collisionDirection.normalized;
 				GetComponent<Rigidbody2D>().velocity = collisionDirection * m_HitVelocity;

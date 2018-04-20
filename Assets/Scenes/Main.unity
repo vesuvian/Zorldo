@@ -1618,6 +1618,11 @@ Prefab:
       propertyPath: m_Augh
       value: 
       objectReference: {fileID: 8300000, guid: cdef63fda4dc6bd409466ecff4aa3b1b, type: 3}
+    - target: {fileID: 114474946847256596, guid: ef2008c6a3aff7543894a4a27d57d7ec,
+        type: 2}
+      propertyPath: m_MaxHealth
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ef2008c6a3aff7543894a4a27d57d7ec, type: 2}
   m_IsPrefabParent: 0

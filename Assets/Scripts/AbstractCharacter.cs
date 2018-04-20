@@ -4,7 +4,17 @@ namespace Assets.Scripts
 {
 	public abstract class AbstractCharacter : AbstractMonoBehaviour
 	{
-		[SerializeField] private int m_Speed;
+		[SerializeField] protected int m_Speed;
+
+		[SerializeField] protected int m_MaxHealth;
+
+		public int Health { get; protected set; }
+
+		protected override void OnEnable()
+		{
+			base.OnEnable();
+			Health = m_MaxHealth;
+		}
 
 		/// <summary>
 		/// Called once per frame.
