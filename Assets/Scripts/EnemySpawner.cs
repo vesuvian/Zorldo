@@ -83,7 +83,8 @@ public sealed class EnemySpawner : AbstractMonoBehaviour
 	private void DestroyEnemies()
 	{
 		foreach (Enemy enemy in m_Enemies)
-			Destroy(enemy.gameObject);
+			if(enemy.gameObject != null)
+				Destroy(enemy.gameObject);
 		m_Enemies.Clear();
 	}
 }
