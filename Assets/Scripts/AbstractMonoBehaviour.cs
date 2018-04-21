@@ -43,5 +43,12 @@ namespace Assets.Scripts
 		protected virtual void OnCollisionStay2D(Collision2D collision)
 		{
 		}
+
+		protected virtual void OnTriggerEnter2D(Collider2D collider)
+		{
+		}
+		protected virtual void OnTriggerStay2D(Collider2D collider)
+		{
+		}
 	}
 }

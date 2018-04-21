@@ -7,8 +7,6 @@ namespace Assets.Scripts
 	/// </summary>
 	public sealed class Protagonist : AbstractCharacter
 	{
-		[SerializeField]
-		private int m_HitVelocity;
 
 		[SerializeField]
 		private AudioClip m_Augh;
@@ -35,7 +33,7 @@ namespace Assets.Scripts
 
 		protected override void OnCollisionEnter2D(Collision2D collision)
 		{
-			if (collision.rigidbody != null && collision.rigidbody.gameObject.name == "Enemy")
+			if (collision.rigidbody != null && collision.rigidbody.gameObject.GetComponent<Enemy>() != null)
 			{
 				AudioSource source = GetComponent<AudioSource>();
 
@@ -51,12 +49,16 @@ namespace Assets.Scripts
 
 		protected override void OnCollisionStay2D(Collision2D collision)
 		{
-			if (collision.rigidbody != null && collision.rigidbody.gameObject.name == "Enemy")
+			if (collision.rigidbody != null && collision.rigidbody.gameObject.GetComponent<Enemy>() != null)
 			{
 				Vector2 collisionDirection = collision.otherRigidbody.position - collision.rigidbody.position;
-				collisionDirection = collisionDirection.normalized;
-				GetComponent<Rigidbody2D>().velocity = collisionDirection * m_HitVelocity;
+				Knockback(collisionDirection);
 			}
+		}
+
+		protected override void Die()
+		{
+			Destroy(gameObject);
 		}
 	}
 }

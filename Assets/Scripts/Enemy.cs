@@ -9,10 +9,7 @@ namespace Assets.Scripts
 	{
 		[SerializeField]
 		private GameObject _target;
-
-		[SerializeField]
-		private int m_HitVelocity;
-
+		
 		public GameObject Target { get { return _target; } set { _target = value; } }
 
 		/// <summary>
@@ -33,9 +30,13 @@ namespace Assets.Scripts
 			if (collision.otherRigidbody != null && collision.rigidbody != null)
 			{
 				Vector2 collisionDirection = collision.otherRigidbody.position - collision.rigidbody.position;
-				collisionDirection = collisionDirection.normalized;
-				GetComponent<Rigidbody2D>().velocity = collisionDirection * m_HitVelocity;
+				Knockback(collisionDirection);
 			}
+		}
+
+		protected override void Die()
+		{
+			Destroy(gameObject);
 		}
 	}
 }
